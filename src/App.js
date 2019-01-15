@@ -1,7 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+import { Container } from 'semantic-ui-react'
 import './App.css';
 
 import PokemonSearch from './components/PokemonSearch'
+import PokemonCard from './components/PokemonCard'
 
 const API = 'https://api.pokemontcg.io/v1/cards'
 
@@ -31,17 +33,18 @@ class App extends Component {
       }))
   }
   render() {
-    console.log(this.state.data)
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
-          <PokemonSearch handleChange={this.handleChangePokemon}/>
-        </form>
+      <Container className="container" fluid>
+          <PokemonSearch handleChange={this.handleChangePokemon} handleSubmit={this.handleSubmit}/>
+
         {this.state.data && this.state.data.map(x =>
           <li key={x.id}>
-            {x.name}
+            <PokemonCard
+              name={x.name}
+              image={x.imageUrl}
+              hp={x.hp}/>
           </li>)}
-      </div>
+      </Container>
     );
   }
 }
