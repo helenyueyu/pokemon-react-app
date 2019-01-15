@@ -1,25 +1,45 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
+const API = 'https://api.pokemontcg.io/v1/cards'
+
 class App extends Component {
+  state = {
+    pokemon: '',
+    data: ''
+  }
+  componentDidMount() {
+    fetch(`https://api.pokemontcg.io/v1/cards?name=${this.state.pokemon}`)
+      .then(res => res.json())
+      .then(data => this.setState({
+        data: data
+      }))
+  }
+  handleSubmit = (e) => {
+    e.preventDefault()
+    this.setState({
+      pokemon: e.target.value
+    })
+    fetch(`https://api.pokemontcg.io/v1/cards?name=${this.state.pokemon}`)
+      .then(res => res.json())
+      .then(data => this.setState({
+        data: data
+      }))
+      .then(console.log(this.state.data))
+  }
+  handleChange = (e) => {
+    this.setState({
+      pokemon: e.target.value
+    })
+  }
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div>
+      <form onSubmit={this.handleSubmit}>
+        <input onChange={this.handleChange}/>
+        <button>Submit</button>
+      </form>
+      {this.state.data && this.state.data.map(x => <li>'Forever'</li>)}
       </div>
     );
   }
