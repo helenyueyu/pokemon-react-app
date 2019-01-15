@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Container } from 'semantic-ui-react'
+import { Container, Card } from 'semantic-ui-react'
 import './App.css';
 
 import PokemonSearch from './components/PokemonSearch'
@@ -37,13 +37,20 @@ class App extends Component {
       <Container className="container" fluid>
           <PokemonSearch handleChange={this.handleChangePokemon} handleSubmit={this.handleSubmit}/>
 
+      <Card.Group itemsPerRow={4}>
         {this.state.data && this.state.data.map(x =>
           <li key={x.id}>
             <PokemonCard
               name={x.name}
-              image={x.imageUrl}
-              hp={x.hp}/>
+              types={x.types}
+              image={x.imageUrlHiRes}
+              hp={x.hp}
+              rarity={x.rarity}
+              attacks={x.attacks}
+              weaknesses={x.weaknesses}
+              />
           </li>)}
+        </Card.Group>
       </Container>
     );
   }

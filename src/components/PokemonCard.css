@@ -1,0 +1,14 @@
+.pokemon-card {
+  height: 410px;
+  margin: 1rem !important;
+}
+.pokemon-image {
+  height: 410px;
+}
+.pokemon-label {
+  height: 100%;
+  border: 1px solid black; 
+}
+.pokemon-card li {
+  list-style: square;
+}
