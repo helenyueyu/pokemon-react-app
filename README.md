@@ -4,9 +4,9 @@ This app has a search bar which allows the look up of various pokemon. Also util
 
 ![Pokemon screenshot](pokemon1.png?raw=true)
 
-(pokemon2.png?raw=true)
+![Pokemon screenshot](pokemon2.png?raw=true)
 
-(pokemon3.png?raw=true)
+![Pokemon screenshot](pokemon3.png?raw=true)
 
 
 
